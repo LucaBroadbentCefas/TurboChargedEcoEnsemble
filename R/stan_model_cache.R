@@ -17,7 +17,7 @@ get_explicit_stanmodel <- function(model_name) {
     }
     assign(
       model_name,
-      rstan::stan_model(file = stan_file, allow_undefined = TRUE),
+      rstan::stan_model(file = stan_file, model_name = model_name, allow_undefined = TRUE),
       envir = .stan_model_cache_explicit
     )
   }
