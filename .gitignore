@@ -4,7 +4,3 @@
 inst/doc
 /doc/
 /Meta/
-
-# Compiled artifacts
-src/*.o
-src/*.dll
