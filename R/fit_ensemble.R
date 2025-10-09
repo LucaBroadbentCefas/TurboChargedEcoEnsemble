@@ -38,12 +38,12 @@ get_mcmc_ensemble_model <- function(priors, likelihood = TRUE, drivers = FALSE,
     if (likelihood) {
       if (!drivers){
         if (use_explicit) {
-          return(get_explicit_stanmodel("ensemble_model_hierarchical_explicit"))
+          return(stanmodels$ensemble_model_hierarchical_explicit)
         }
         return(stanmodels$ensemble_model_hierarchical)
       } else {
         if (use_explicit) {
-          return(get_explicit_stanmodel("ensemble_model_hierarchical_withdrivers_explicit"))
+          return(stanmodels$ensemble_model_hierarchical_withdrivers_explicit)
         }
         return(stanmodels$ensemble_model_hierarchical_withdrivers)
       }
@@ -58,12 +58,12 @@ get_mcmc_ensemble_model <- function(priors, likelihood = TRUE, drivers = FALSE,
     if (likelihood) {
       if (!drivers) {
         if (use_explicit) {
-          return(get_explicit_stanmodel("ensemble_model_explicit"))
+          return(stanmodels$ensemble_model_explicit)
         }
         return(stanmodels$ensemble_model)
       } else {
         if (use_explicit) {
-          return(get_explicit_stanmodel("ensemble_model_withdrivers_explicit"))
+          return(stanmodels$ensemble_model_withdrivers_explicit)
         }
         return(stanmodels$ensemble_model_withdrivers)
       }
