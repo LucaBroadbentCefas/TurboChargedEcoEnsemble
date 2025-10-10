@@ -34,6 +34,8 @@ get_mcmc_ensemble_model <- function(priors, likelihood = TRUE, drivers = FALSE,
 
   st_pf <- priors@ind_st_params@parametrisation_form
 
+   print(st_pf)
+
   if (st_pf == "hierarchical") {
     if (likelihood) {
       if (!drivers){
@@ -124,8 +126,18 @@ fit_ensemble_model <- function(observations, simulators, priors,
     stan_input <- ens_data@stan_input
 
     #Using hierarchical priors uses a different model. This speeds up the sampling enormously
-    mod <- get_mcmc_ensemble_model(priors, likelihood = TRUE, sampler = sampler)
+    if (sampler == "explicit"){
+    mod <- stanmodels$ensemble_model_explicit
+    } else {
+    mod <- stanmodels$ensemble_model
+    }
+
     if(stan_input$form_prior_ind_st == 3 || stan_input$form_prior_ind_st == 4){
+      if (sampler == "explicit"){
+        mod <- stanmodels$ensemble_model_hierarchical_explicit
+      } else {
+        mod <- stanmodels$ensemble_model_hierarchical
+      }
       if(!full_sample){
         stop("It is possible to generate a point estimate for the prior if the individual short-term discrepancy prior follows a hierarchical parameterisation. Please generate a full sample using 'full_sample=TRUE'.")
       }
