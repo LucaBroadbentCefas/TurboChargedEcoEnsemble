@@ -79,6 +79,7 @@ Collate:
     'plot_functions_withdrivers.R'
     'prior_functions.R'
     'stanmodels.R'
+    'stan_sampling_utils.R'
     'validation_functions.R'
     'validation_functions_withdrivers.R'
     'validation_prior_functions.R'

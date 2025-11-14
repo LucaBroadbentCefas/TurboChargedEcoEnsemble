@@ -38,7 +38,9 @@ fit_ensemble_model_dri <- function(observations, simulators, priors,
 
   samples <- NULL; point_estimate <- NULL
   if(full_sample){
-    samples <- rstan::sampling(mod, data=stan_input, control = control, ...)
+    samples <- stan_sampling_with_filter(mod, data = stan_input,
+                                         control = control,
+                                         ...)
   }else{
     point_estimate <- rstan::optimizing(mod, data=stan_input,as_vector=FALSE, ...)
   }
